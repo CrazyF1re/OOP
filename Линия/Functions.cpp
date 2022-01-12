@@ -54,28 +54,28 @@
 	}
 	/*4*/void Straight::check_parallelism_axis()
 	{
-		if (a && !b) std::cout << "Паралельна оси Ox" << std::endl;
-		else if (!a && b)std::cout << "Паралельна оси Oy" << std::endl;
-		else std::cout << "Не параллельна ни одной из осей" << std::endl;
+		if (a && !b) std::cout << "РџР°СЂР°Р»РµР»СЊРЅР° РѕСЃРё Ox" << std::endl;
+		else if (!a && b)std::cout << "РџР°СЂР°Р»РµР»СЊРЅР° РѕСЃРё Oy" << std::endl;
+		else std::cout << "РќРµ РїР°СЂР°Р»Р»РµР»СЊРЅР° РЅРё РѕРґРЅРѕР№ РёР· РѕСЃРµР№" << std::endl;
 	}
 	/*5*/void Straight::segments()
 	{
-		if (c == 0) std::cout << "Отрезков нет т.к. прямая проходит через начало координат" << std::endl;
+		if (c == 0) std::cout << "РћС‚СЂРµР·РєРѕРІ РЅРµС‚ С‚.Рє. РїСЂСЏРјР°СЏ РїСЂРѕС…РѕРґРёС‚ С‡РµСЂРµР· РЅР°С‡Р°Р»Рѕ РєРѕРѕСЂРґРёРЅР°С‚" << std::endl;
 		else if (a == 0)
 		{
-			std::cout << "По оси Ox отрезок равен 0 т.к. коэффициент при x равен 0 " << std::endl;
-			std::cout << "По оси Oy: " << -c / b << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Ox РѕС‚СЂРµР·РѕРє СЂР°РІРµРЅ 0 С‚.Рє. РєРѕСЌС„С„РёС†РёРµРЅС‚ РїСЂРё x СЂР°РІРµРЅ 0 " << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Oy: " << -c / b << std::endl;
 
 		}
 		else if (b == 0)
 		{
-			std::cout << "По оси Ox: " << -c / a << std::endl;
-			std::cout << "По оси Oy отрезок равен 0 т.к. коэффициент при y равен 0: " << -c / b << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Ox: " << -c / a << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Oy РѕС‚СЂРµР·РѕРє СЂР°РІРµРЅ 0 С‚.Рє. РєРѕСЌС„С„РёС†РёРµРЅС‚ РїСЂРё y СЂР°РІРµРЅ 0: " << -c / b << std::endl;
 		}
 		else
 		{
-			std::cout << "По оси Ox: " << -c / a << std::endl;
-			std::cout << "По оси Oy: " << -c / b << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Ox: " << -c / a << std::endl;
+			std::cout << "РџРѕ РѕСЃРё Oy: " << -c / b << std::endl;
 		}
 	}
 	/*6*/float Straight::coefficient()
@@ -83,7 +83,7 @@
 		if (b == 0)return 0;
 		if (!a && b)
 		{
-			std::cout << "Паралельна оси Oy => коэффициент не существует" << std::endl;
+			std::cout << "РџР°СЂР°Р»РµР»СЊРЅР° РѕСЃРё Oy => РєРѕСЌС„С„РёС†РёРµРЅС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" << std::endl;
 			return 0;
 		}
 		else return -a / b;
@@ -143,8 +143,8 @@
 	}
 	/*16*/void Straight::which_line_is_closer(Straight line2)
 	{
-		if (distance() > line2.distance()) std::cout << "Линия line2 ближе" << std::endl;
-		else std::cout << "Линия line1 ближе" << std::endl;
+		if (distance() > line2.distance()) std::cout << "Р›РёРЅРёСЏ line2 Р±Р»РёР¶Рµ" << std::endl;
+		else std::cout << "Р›РёРЅРёСЏ line1 Р±Р»РёР¶Рµ" << std::endl;
 	}
 	/*17*/float Straight::distance_between_paralel_lines(Straight line2)
 	{
