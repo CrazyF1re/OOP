@@ -1,21 +1,21 @@
 #include "massiv.h"
 #include <iostream>
-Array::Array() //конструктор по умолчанию
+Array::Array() //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 {
 	n = 0;
 	a = new int[n+1];
 };
-/*1*/Array::Array(int N) /*конструктор с целым аргументом, N - количество элементов в массиве*/
+/*1*/Array::Array(int N) /*РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ С†РµР»С‹Рј Р°СЂРіСѓРјРµРЅС‚РѕРј, N - РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ*/
 {
 	a = new int[N]; n = N;
 }
-/*2*/Array::Array(int* b, int m) //коструктор с аргументом m - число элементов в массиве b;
+/*2*/Array::Array(int* b, int m) //РєРѕСЃС‚СЂСѓРєС‚РѕСЂ СЃ Р°СЂРіСѓРјРµРЅС‚РѕРј m - С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ b;
 {
 	a = new int[m];
 	for (int i = 0; i < m; i++)a[i] = b[i];
 	n = m;
 }
-/*3*/Array::Array(const Array& X)// конструктор
+/*3*/Array::Array(const Array& X)// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	n = X.n;
 	a = new int[n];
@@ -24,7 +24,7 @@ Array::Array() //конструктор по умолчанию
 		a[i] = X.a[i];
 	}
 }
-/*4*/Array & Array::operator= (const Array& X)//перегрузка оператора =
+/*4*/Array & Array::operator= (const Array& X)//РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° =
 {
 	if (this != &X) 
 	{
@@ -35,8 +35,8 @@ Array::Array() //конструктор по умолчанию
 	}
 	return *this;
 }
-/*5*/Array::~Array() { delete[]a; }// деструктор
-/*6*/void Array::Scan(int m)// считывание элементов
+/*5*/Array::~Array() { delete[]a; }// РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+/*6*/void Array::Scan(int m)// СЃС‡РёС‚С‹РІР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
 {
 	std::cout << "enter array of " << m << " numbers: " << std::endl;
 	if (n == m) for (int i = 0; i < n; i++)std::cin >> a[i];
@@ -48,12 +48,12 @@ Array::Array() //конструктор по умолчанию
 		n = m;
 	}
 }
-/*7*/void Array::Print()//вывод элементов
+/*7*/void Array::Print()//РІС‹РІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ
 {
 	for (int i = 0; i < n; i++) std::cout << a[i] << ' ';
 	std::cout << std::endl;
 }
-/*8*/int& Array:: operator [](int i)// считывание элемента по позиции 
+/*8*/int& Array:: operator [](int i)// СЃС‡РёС‚С‹РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РїРѕР·РёС†РёРё 
 {
 	if (i < 0) 
 	{
@@ -67,14 +67,14 @@ Array::Array() //конструктор по умолчанию
 	}
 	return a[i];
 }
-/*9*/int Array::FindKey(int key)//поиск индекса, где стоит элемент key
+/*9*/int Array::FindKey(int key)//РїРѕРёСЃРє РёРЅРґРµРєСЃР°, РіРґРµ СЃС‚РѕРёС‚ СЌР»РµРјРµРЅС‚ key
 {
 	int i = 0;
 	while (this->a[i] != key && i < this->n)i++;
 	if (i == this->n)return -1;
 	else return i;
 }
-/*10*/Array& Array::operator+= (int key)//перегрузка оператора добавления элемента в конец массива
+/*10*/Array& Array::operator+= (int key)//РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР°
 {
 	int i, * t;
 	t = new int[n + 1];
@@ -85,18 +85,18 @@ Array::Array() //конструктор по умолчанию
 	a = t;
 	return *this;
 }
-/*11*/Array Array::operator+(int key)//перегрузка, формирование нового массива b = a+ key;
+/*11*/Array Array::operator+(int key)//РїРµСЂРµРіСЂСѓР·РєР°, С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° b = a+ key;
 {
 	Array X(n + 1);
 	for (int i = 0; i < n; i++)X.a[i] = a[i];
 	X.a[n] = key;
 	return X;
 }
-/*12*/Array& Array::operator +=(const Array& C)//перегрузка, добавление массива C в конец массива a
+/*12*/Array& Array::operator +=(const Array& C)//РїРµСЂРµРіСЂСѓР·РєР°, РґРѕР±Р°РІР»РµРЅРёРµ РјР°СЃСЃРёРІР° C РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР° a
 {
 	int i, s = 0;
 	int size = this->n + C.n;
-	int* mas = new int[size];//временный массив
+	int* mas = new int[size];//РІСЂРµРјРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ
 	for ( i = 0; i < this->n; i++)
 	{
 		mas[i] = this->a[i];
@@ -106,14 +106,14 @@ Array::Array() //конструктор по умолчанию
 		mas[i] = C.a[s];
 		s++;
 	}
-	delete[]this->a;//удаление массива 
-	this->n = size;//обновление переменной размера массива
-	this->a = new int[size];//объявление нового массива
-	for (int i = 0; i < size; i++) this->a[i] = mas[i];//конструктор копирования
-	delete[]mas;//освобождение динамической памяти
+	delete[]this->a;//СѓРґР°Р»РµРЅРёРµ РјР°СЃСЃРёРІР° 
+	this->n = size;//РѕР±РЅРѕРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ СЂР°Р·РјРµСЂР° РјР°СЃСЃРёРІР°
+	this->a = new int[size];//РѕР±СЉСЏРІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР°
+	for (int i = 0; i < size; i++) this->a[i] = mas[i];//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	delete[]mas;//РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё
 	return *this;
 };
-/*13*/Array Array::operator+(const Array& C) //перегрузка, формированиe массива y= a + C
+/*13*/Array Array::operator+(const Array& C) //РїРµСЂРµРіСЂСѓР·РєР°, С„РѕСЂРјРёСЂРѕРІР°РЅРёe РјР°СЃСЃРёРІР° y= a + C
 {
 	int size = this->n + C.n;
 	int i, s = 0;
@@ -126,7 +126,7 @@ Array::Array() //конструктор по умолчанию
 	}
 	return y;
 };
-/*14*/Array& Array::operator-=(int key)//перегрузка, удалениe элемента	key
+/*14*/Array& Array::operator-=(int key)//РїРµСЂРµРіСЂСѓР·РєР°, СѓРґР°Р»РµРЅРёe СЌР»РµРјРµРЅС‚Р°	key
 {
 	int i = 0;
 	while (this->a[i] != key)i++;
@@ -143,26 +143,26 @@ Array::Array() //конструктор по умолчанию
 		return *this;
 	}
 };
-/*15*/Array Array::operator-(int key) //формирование нового массива b = a - key 
+/*15*/Array Array::operator-(int key) //С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° b = a - key 
 {
 	Array b = *this;
 	b -= key;
 	return b;
 };
-/*16*/Array& Array::DelPosEq(int pos)// удаление элемента с позиции pos
+/*16*/Array& Array::DelPosEq(int pos)// СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃ РїРѕР·РёС†РёРё pos
 {
 	if (pos < 0 || pos >=n)return *this;
 	this->ShiftLeft(pos);
 	return *this;
 };
-/*17*/Array Array::DelPosNew(int pos)//полное удаление элемента pos
+/*17*/Array Array::DelPosNew(int pos)//РїРѕР»РЅРѕРµ СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° pos
 {
 	Array T = *this;
 	if (pos < 0 || pos >=n)return T;
 	T.ShiftLeft(pos);
 	return T;
 };
-/*18*/bool Array::operator==(Array C) // проверка равенства массивов
+/*18*/bool Array::operator==(Array C) // РїСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° РјР°СЃСЃРёРІРѕРІ
 {
 	int i = 0;
 	if (n != C.n)return 0;
@@ -170,7 +170,7 @@ Array::Array() //конструктор по умолчанию
 	if (i == this->n)return 1;
 	else return 0;
 };
-/*19*/bool Array::operator!=(Array C) // проверка неравенства массивов
+/*19*/bool Array::operator!=(Array C) // РїСЂРѕРІРµСЂРєР° РЅРµСЂР°РІРµРЅСЃС‚РІР° РјР°СЃСЃРёРІРѕРІ
 {
 	int i = 0;
 	if (n != C.n)return 1;
@@ -178,7 +178,7 @@ Array::Array() //конструктор по умолчанию
 	if (i == this->n)return 0;
 	else return 1;
 };
-/*20*/int Array::Max() //индекс максимального элемента массива 
+/*20*/int Array::Max() //РёРЅРґРµРєСЃ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° 
 {
 	int i = 1;
 	int imax = 0;
@@ -194,7 +194,7 @@ Array::Array() //конструктор по умолчанию
 	}
 	return imax;
 };
-/*21*/int Array::Min()//индекс минимального элемента массива
+/*21*/int Array::Min()//РёРЅРґРµРєСЃ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
 {
 	int i = 1;
 	int min = this->a[0];
@@ -205,7 +205,7 @@ Array::Array() //конструктор по умолчанию
 	}
 	return min;
 };
-/*22*/void Array::Sorting() //сортировка массива  бинарной вставкой
+/*22*/void Array::Sorting() //СЃРѕСЂС‚РёСЂРѕРІРєР° РјР°СЃСЃРёРІР°  Р±РёРЅР°СЂРЅРѕР№ РІСЃС‚Р°РІРєРѕР№
 {
 	int i = 1;
 	while (i < n)
@@ -248,7 +248,7 @@ std::istream& operator >> (std::istream& r, Array& x)
 	}
 	return r;
 }
-/*23*/void Array::ShiftLeft(int pos)//сдвиг влево начиная с позиции pos+1
+/*23*/void Array::ShiftLeft(int pos)//СЃРґРІРёРі РІР»РµРІРѕ РЅР°С‡РёРЅР°СЏ СЃ РїРѕР·РёС†РёРё pos+1
 {
 	for (int i = pos; i < n-1;i++) 
 	{
@@ -256,11 +256,11 @@ std::istream& operator >> (std::istream& r, Array& x)
 	}
 	n--;
 };
-int Array::len()// длинна массива
+int Array::len()// РґР»РёРЅРЅР° РјР°СЃСЃРёРІР°
 {
 	return this->n;
 }
-int Array::Get_one(int i) // i-ый элемент массива
+int Array::Get_one(int i) // i-С‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 {
 	if (i < n && i>=0) return this->a[i];
 	else return -1;
