@@ -25,7 +25,7 @@ Set Set:: operator +(char ch)
 	ans.SetUp1((UC)ch);
 	ans.M = ans.Weight();
 	return ans;
-}// добавление элемента к множеству создается новое множество
+}// РґРѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° Рє РјРЅРѕР¶РµСЃС‚РІСѓ СЃРѕР·РґР°РµС‚СЃСЏ РЅРѕРІРѕРµ РјРЅРѕР¶РµСЃС‚РІРѕ
 Set& Set:: operator+=(char ch) 
 {
 	SetUp1((UC)ch);
@@ -75,7 +75,7 @@ Set Set::operator -(Set X)
 {
 	Set ans = *this;
 	ans ^= X;
-	ans &= *this;//чтобы исключить элементы  из X которых нет в *this
+	ans &= *this;//С‡С‚РѕР±С‹ РёСЃРєР»СЋС‡РёС‚СЊ СЌР»РµРјРµРЅС‚С‹  РёР· X РєРѕС‚РѕСЂС‹С… РЅРµС‚ РІ *this
 	ans.M = ans.Weight();
 	return ans;
 }
