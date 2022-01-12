@@ -1,21 +1,21 @@
 #include "section .h"
 #include <iostream>
-#define l 0.0000000005//т.к. работаем с float, то некоторые вычисления могут быть неточными 
+#define l 0.0000000005//С‚.Рє. СЂР°Р±РѕС‚Р°РµРј СЃ float, С‚Рѕ РЅРµРєРѕС‚РѕСЂС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ РјРѕРіСѓС‚ Р±С‹С‚СЊ РЅРµС‚РѕС‡РЅС‹РјРё 
 using namespace std;
-struct Point // структура точка
+struct Point // СЃС‚СЂСѓРєС‚СѓСЂР° С‚РѕС‡РєР°
 {
 	float x;
 	float y;
 };
 Section::Section() { x1 = x2 = y1 = y2 = 0; }
-Section::Section(float x1, float y1, float x2, float y2) //конструктор с аргументами
+Section::Section(float x1, float y1, float x2, float y2) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 {
 	this->x1 = x1;
 	this->y1 = y1;
 	this->x2 = x2;
 	this->y2 = y2;
 }
-void Section::Input()//функция ввода аргументов склавиатуры
+void Section::Input()//С„СѓРЅРєС†РёСЏ РІРІРѕРґР° Р°СЂРіСѓРјРµРЅС‚РѕРІ СЃРєР»Р°РІРёР°С‚СѓСЂС‹
 {
 	float x1=0, x2=0, y1=0, y2=0;
 	cout << "Enter x1, y1,x2,y2:";
@@ -26,7 +26,7 @@ void Section::Input()//функция ввода аргументов склавиатуры
 	this->y2 = y2;
 }
 
-void Section::Output()//функция вывода аргументов
+void Section::Output()//С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° Р°СЂРіСѓРјРµРЅС‚РѕРІ
 {
 	cout << "x1 = " << x1 << endl;
 	cout << "y1 = " << y1 << endl;
@@ -34,19 +34,19 @@ void Section::Output()//функция вывода аргументов
 	cout << "y2 = " << y2 << endl;
 }
 
-float Section::Length()//длинна отрезка
+float Section::Length()//РґР»РёРЅРЅР° РѕС‚СЂРµР·РєР°
 {
-	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));//по формуле
+	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));//РїРѕ С„РѕСЂРјСѓР»Рµ
 }
 
-void Section::Middle()//середина отрезка
+void Section::Middle()//СЃРµСЂРµРґРёРЅР° РѕС‚СЂРµР·РєР°
 {
 	cout << "Middle cords is ";
-	cout << "X: " << abs(x1 - x2)/2<<"	";//по формуле
-	cout << "Y: " << abs(y1 - y2)/2 << endl;//по формуле
+	cout << "X: " << abs(x1 - x2)/2<<"	";//РїРѕ С„РѕСЂРјСѓР»Рµ
+	cout << "Y: " << abs(y1 - y2)/2 << endl;//РїРѕ С„РѕСЂРјСѓР»Рµ
 }
 
-void Section::Point_by_ratio(float a, float b)// координаты точки делящей отрезок в отношении a/b
+void Section::Point_by_ratio(float a, float b)// РєРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё РґРµР»СЏС‰РµР№ РѕС‚СЂРµР·РѕРє РІ РѕС‚РЅРѕС€РµРЅРёРё a/b
 {
 	float temp = abs(a / b);
 	cout << "Point by ration  "<<a<<":"<<b<<" is ";
@@ -54,77 +54,77 @@ void Section::Point_by_ratio(float a, float b)// координаты точки делящей отрезо
 	cout << "Y: " << abs(y1 + y2*temp)/(1+temp)<<endl;
 }
 
-bool Section::Is_equal(Section X)//проверка равенства  двух отрезков
+bool Section::Is_equal(Section X)//РїСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР°  РґРІСѓС… РѕС‚СЂРµР·РєРѕРІ
 {
-	if (this->Length() - X.Length()< l)return 1;// по условию сравниваются длины отрезков
+	if (this->Length() - X.Length()< l)return 1;// РїРѕ СѓСЃР»РѕРІРёСЋ СЃСЂР°РІРЅРёРІР°СЋС‚СЃСЏ РґР»РёРЅС‹ РѕС‚СЂРµР·РєРѕРІ
 	return 0;
 }
 
-bool Section::Paralel_OX()//параллельность отрезка оси OX
+bool Section::Paralel_OX()//РїР°СЂР°Р»Р»РµР»СЊРЅРѕСЃС‚СЊ РѕС‚СЂРµР·РєР° РѕСЃРё OX
 {
 	if (abs(y1 -y2) <l)return 1;
 	return 0;
 }
 
-bool Section::Paralel_OY()//параллельность отрезка оси OY
+bool Section::Paralel_OY()//РїР°СЂР°Р»Р»РµР»СЊРЅРѕСЃС‚СЊ РѕС‚СЂРµР·РєР° РѕСЃРё OY
 {
 	if (abs(x1 - x2)<l)return 1;
 	return 0;
 }
 
-bool Section::Paralel_to_other(Section X)//параллельность отрезка другому отрезку
+bool Section::Paralel_to_other(Section X)//РїР°СЂР°Р»Р»РµР»СЊРЅРѕСЃС‚СЊ РѕС‚СЂРµР·РєР° РґСЂСѓРіРѕРјСѓ РѕС‚СЂРµР·РєСѓ
 {
 	if ((x1 / X.x1 - x2 / X.x2) < l && (y1 / X.y1 - y2 / X.y2) < l)return 1;
 	else return 0;
 }
 
-bool Section::Perpendicular_to_other(Section X)//перпендикулярность отрезка другому отрезку
+bool Section::Perpendicular_to_other(Section X)//РїРµСЂРїРµРЅРґРёРєСѓР»СЏСЂРЅРѕСЃС‚СЊ РѕС‚СЂРµР·РєР° РґСЂСѓРіРѕРјСѓ РѕС‚СЂРµР·РєСѓ
 {
-	float k1 = (y2 - y1) / (x2 - x1);//находим k1 в y = k1*x+b1
-	float k2 = (X.y2 - X.y1) / (X.x2 - X.x1);//находим k2 в н = k2*x+b2
-	if ((int)(k2 - k1) / (1 + k2 * k1) == 90)return 1;//высчитываем угол между прямыми приводя отношение коэффициентов к int
+	float k1 = (y2 - y1) / (x2 - x1);//РЅР°С…РѕРґРёРј k1 РІ y = k1*x+b1
+	float k2 = (X.y2 - X.y1) / (X.x2 - X.x1);//РЅР°С…РѕРґРёРј k2 РІ РЅ = k2*x+b2
+	if ((int)(k2 - k1) / (1 + k2 * k1) == 90)return 1;//РІС‹СЃС‡РёС‚С‹РІР°РµРј СѓРіРѕР» РјРµР¶РґСѓ РїСЂСЏРјС‹РјРё РїСЂРёРІРѕРґСЏ РѕС‚РЅРѕС€РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ Рє int
 	else return 0;
 }
 
-bool Section::Is_cross_OX()//пересекает ли отрезок ось OX
+bool Section::Is_cross_OX()//РїРµСЂРµСЃРµРєР°РµС‚ Р»Рё РѕС‚СЂРµР·РѕРє РѕСЃСЊ OX
 {
 	if (y1 * y2 <= 0)return 1;
 	else return 0;
 }
 
-bool Section::Is_cross_OY()//пересекает ли отрезок ось OY
+bool Section::Is_cross_OY()//РїРµСЂРµСЃРµРєР°РµС‚ Р»Рё РѕС‚СЂРµР·РѕРє РѕСЃСЊ OY
 {
 	if(x1 * x2 <= 0)return 1;
 	else return 0;
 }
 
-bool Section::Is_point_belong_section(float a, float b)//принадлежит ли точка отрезку
+bool Section::Is_point_belong_section(float a, float b)//РїСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё С‚РѕС‡РєР° РѕС‚СЂРµР·РєСѓ
 {
-	Section s1(a, b, x1, y1);//1й отрезок
-	Section s2(a, b, x2, y2);//2й отрезок
+	Section s1(a, b, x1, y1);//1Р№ РѕС‚СЂРµР·РѕРє
+	Section s2(a, b, x2, y2);//2Р№ РѕС‚СЂРµР·РѕРє
 	if ((a - x1) / (x2 - x1) - (b - y1) / (y2 - y1) < l && Length()-(s1.Length()+s2.Length()<l))return 1;
-	//сравниваем длинну исходного отрезка с суммой длин 1го и 2го отрезков
+	//СЃСЂР°РІРЅРёРІР°РµРј РґР»РёРЅРЅСѓ РёСЃС…РѕРґРЅРѕРіРѕ РѕС‚СЂРµР·РєР° СЃ СЃСѓРјРјРѕР№ РґР»РёРЅ 1РіРѕ Рё 2РіРѕ РѕС‚СЂРµР·РєРѕРІ
 	else return 0;
 }
 
-void Section::Ratio_by_point(float a, float b)// вывод отношения зная координаты точки
+void Section::Ratio_by_point(float a, float b)// РІС‹РІРѕРґ РѕС‚РЅРѕС€РµРЅРёСЏ Р·РЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё
 {
 	if (Is_point_belong_section(a, b))
 	{
 		Section s1(a, b, x1, y1);
 		Section s2(a, b, x2, y2);
-		cout << "Ratio = " << s1.Length() << ":" << s2.Length()<<endl;//находим длины двух отрезков и выводим их соотношение
+		cout << "Ratio = " << s1.Length() << ":" << s2.Length()<<endl;//РЅР°С…РѕРґРёРј РґР»РёРЅС‹ РґРІСѓС… РѕС‚СЂРµР·РєРѕРІ Рё РІС‹РІРѕРґРёРј РёС… СЃРѕРѕС‚РЅРѕС€РµРЅРёРµ
 	}
 	else cout << "Point does not belong section";
 }
 
-bool Section::Is_point_belong_line(float a, float b)//принадлежит ли точка линии, построенной через точки отрезка
+bool Section::Is_point_belong_line(float a, float b)//РїСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё С‚РѕС‡РєР° Р»РёРЅРёРё, РїРѕСЃС‚СЂРѕРµРЅРЅРѕР№ С‡РµСЂРµР· С‚РѕС‡РєРё РѕС‚СЂРµР·РєР°
 {
-	if ((a - x1) / (x2 - x1) - (b - y1) / (y2 - y1) < l)return 1;//формула
+	if ((a - x1) / (x2 - x1) - (b - y1) / (y2 - y1) < l)return 1;//С„РѕСЂРјСѓР»Р°
 	else return 0;
 }
 
-bool Section::Is_section_belong_line()//пересекает ли отрезок заданную прямую
+bool Section::Is_section_belong_line()//РїРµСЂРµСЃРµРєР°РµС‚ Р»Рё РѕС‚СЂРµР·РѕРє Р·Р°РґР°РЅРЅСѓСЋ РїСЂСЏРјСѓСЋ
 {
 	float A1=0, B1=0, C1=0;
 	cout << "Enter A,B,C(Ax+By+C=0): ";
@@ -134,14 +134,14 @@ bool Section::Is_section_belong_line()//пересекает ли отрезок заданную прямую
 	A1 = 1 / (x2 - x1);
 	B1 = 1 / (y2 - y1);
 	C1 = -x1 / (x2 - x1) + y1 / (y2 - y1);
-	temp.x = -(C1 * B2 - C2 * B1) / (A1 * B2 - A2 * B1);//находим координаты пересечения 
-	temp.y = -(A1 * C2 - A2 * C1) / (A1 * B2 - A2 * B1);//заданной линии и линии построенной по точкам отрезка
-	if (Is_point_belong_section(temp.x, temp.y))return 1;//проверем принадлежит ли точка отрезку
+	temp.x = -(C1 * B2 - C2 * B1) / (A1 * B2 - A2 * B1);//РЅР°С…РѕРґРёРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РїРµСЂРµСЃРµС‡РµРЅРёСЏ 
+	temp.y = -(A1 * C2 - A2 * C1) / (A1 * B2 - A2 * B1);//Р·Р°РґР°РЅРЅРѕР№ Р»РёРЅРёРё Рё Р»РёРЅРёРё РїРѕСЃС‚СЂРѕРµРЅРЅРѕР№ РїРѕ С‚РѕС‡РєР°Рј РѕС‚СЂРµР·РєР°
+	if (Is_point_belong_section(temp.x, temp.y))return 1;//РїСЂРѕРІРµСЂРµРј РїСЂРёРЅР°РґР»РµР¶РёС‚ Р»Рё С‚РѕС‡РєР° РѕС‚СЂРµР·РєСѓ
 	else return 0;
 }
 
-void Section::Increase(int k)//умножение отрезка на число k
+void Section::Increase(int k)//СѓРјРЅРѕР¶РµРЅРёРµ РѕС‚СЂРµР·РєР° РЅР° С‡РёСЃР»Рѕ k
 {
-	x2 *= k;//изменяем координаты одной точки в k раз
+	x2 *= k;//РёР·РјРµРЅСЏРµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РѕРґРЅРѕР№ С‚РѕС‡РєРё РІ k СЂР°Р·
 	y2 *= k;
 }
